@@ -24,4 +24,9 @@ public class BookController {
     public Book addBook(@RequestBody Book book) {
         return bookRepository.save(book);
     }
+    //Get Book by the Id
+        @GetMapping("/book/{id}")
+    public Book getBookById(@PathVariable int id) {
+        return bookRepository.findById(id).get();
+    }
 }
