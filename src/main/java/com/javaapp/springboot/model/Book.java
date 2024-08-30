@@ -21,9 +21,14 @@ public class Book {
     @Column(name = "BOOK_PUBLISHER", nullable = false, length = 50)
     private String publisher;
     @Column(name = "BOOK_PRICE")
-    private String price;
+    private Integer price;
     @Column(name = "BOOK_QUANTITY")
-    private String quantity;
+    private Integer quantity;
     @Column(name = "BOOK_ISBN", nullable = false, length = 50, unique = true)
     private String isbn;
+    @Column(name = "BOOK_DESCRIPTION", nullable = false, length = 2000)
+    private String description;
+    @Column(name = "BOOK_COVER")
+    private String cover;
+
 }
