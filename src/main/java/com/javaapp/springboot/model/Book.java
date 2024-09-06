@@ -1,11 +1,11 @@
+/**
+ * @author Snehal Kotian
+ **/
 package com.javaapp.springboot.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
-/**
- * @author Snehal Kotian
- **/
 @Entity
 @Data
 @Table(name = "BOOK_DATA")
@@ -28,5 +28,4 @@ public class Book {
     private String isbn;
     @Column(name = "BOOK_DESCRIPTION", nullable = false, length = 2000)
     private String description;
-
 }

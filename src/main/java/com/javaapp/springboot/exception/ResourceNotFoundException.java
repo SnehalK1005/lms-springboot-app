@@ -1,3 +1,6 @@
+/**
+ * @author Snehal Kotian
+ **/
 package com.javaapp.springboot.exception;
 
 import org.springframework.http.HttpStatus;
