@@ -1,3 +1,6 @@
+/**
+ * @author Snehal Kotian
+ **/
 package com.javaapp.springboot;
 
 import org.springframework.boot.SpringApplication;
