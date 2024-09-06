@@ -9,7 +9,10 @@ import com.javaapp.springboot.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -29,7 +32,7 @@ public class BookController {
         return bookRepository.save(book);
     }
     //Get Book by the Id
-        @GetMapping("/book/{id}")
+    @GetMapping("/book/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable int id) {
         Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with id: " + id));
         return ResponseEntity.ok(book);
@@ -47,5 +50,13 @@ public class BookController {
         book.setQuantity(bookDetails.getQuantity());
         Book bookUpdated = bookRepository.save(book);
         return ResponseEntity.ok(bookUpdated);
+    }
+    @DeleteMapping("/books/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteBook(@PathVariable int id) {
+        Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with id: " + id));
+        bookRepository.delete(book);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("Deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }
