@@ -59,4 +59,13 @@ public class BookController {
         response.put("Deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+    @GetMapping("/books/search")
+    public List<Book> searchBooks(@RequestParam String field, @RequestParam String value) {
+        return switch (field) {
+            case "title" -> bookRepository.findByTitleContaining(value);
+            case "author" -> bookRepository.findByAuthorContaining(value);
+            case "publisher" -> bookRepository.findByPublisherContaining(value);
+            default -> throw new IllegalArgumentException("Invalid search field: " + field);
+        };
+    }
 }
